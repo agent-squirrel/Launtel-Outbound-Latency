@@ -32,7 +32,7 @@ def main():
       database = "latency"
       urls = [ "http://influxdb.host:8086" ]
       username = "admin"
-      password = "oaW6eghe"
+      password = "samplepass"
     {% for rows in allrows %}
     [[inputs.ping]]
         urls = [ {{ rows.ipaddr|tojson }} ]
@@ -70,7 +70,7 @@ def main():
 	      database = "latency"
 	      urls = [ "http://iunfluxdb.host:8086" ]
 	      username = "admin"
-	      password = "oaW6eghe"
+	      password = "samplepass"
             {% for rows in allrows %}
             [[inputs.ping]]
                 urls = [ {{ rows.ipaddr|tojson }} ]
