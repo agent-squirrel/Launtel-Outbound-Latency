@@ -9,7 +9,7 @@ import docker
 
 def main():
     try:
-        db = pymysql.connect(host="latency.launtel.net.au",user="latency",password="meih7Baes",db="latency",cursorclass=pymysql.cursors.DictCursor)
+        db = pymysql.connect(host="dbhost",user="latency",password="dbpass",db="latency",cursorclass=pymysql.cursors.DictCursor)
         cursor = db.cursor()
         cursor.execute("checksum table urls")
         checksum_start = cursor.fetchone()
@@ -30,7 +30,7 @@ def main():
     # Output Plugin InfluxDB
     [[outputs.influxdb]]
       database = "latency"
-      urls = [ "http://latency.launtel.net.au:8086" ]
+      urls = [ "http://influxdb.host:8086" ]
       username = "admin"
       password = "oaW6eghe"
     {% for rows in allrows %}
@@ -68,7 +68,7 @@ def main():
 	    # Output Plugin InfluxDB
 	    [[outputs.influxdb]]
 	      database = "latency"
-	      urls = [ "http://latency.launtel.net.au:8086" ]
+	      urls = [ "http://iunfluxdb.host:8086" ]
 	      username = "admin"
 	      password = "oaW6eghe"
             {% for rows in allrows %}
