@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+    gentelegraf:
+        image: registry.launtel.net.au/gentelegraf:latest
+        restart: unless-stopped
+        volumes:
+           - /var/run/docker.sock:/run/docker.sock
+           - telegraf-conf:/etc/telegraf
+
+    launtel_telegraf:
+        image: registry.launtel.net.au/launtel_telegraf:latest
+        restart: unless-stopped
+        hostname: gigantes
+        depends_on:
+           - "gentelegraf"
+        volumes:
+           - telegraf-conf:/etc/telegraf
+
+volumes:
+    telegraf-conf:
